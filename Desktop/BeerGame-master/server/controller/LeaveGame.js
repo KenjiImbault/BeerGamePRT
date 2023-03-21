@@ -13,7 +13,7 @@ export default function LeaveGame(io, socket) {
     ]}, (err, obj) => {
     if(obj === null) return console.log("[Disconnect-Prüfung] Spieler ist in keinem Spiel aktiv!")
     else {
-      //Wenn Spieler bei disconnect in einem Spiel ist, wird die Zuordnung in der Datenbank aufgehoben
+      //Si le joueur est dans un jeu lors de la déconnexion, l'affectation dans la base de données est annulée
       if(obj.playerData.producer === sid) {
         obj.playerData.producer = "NA"
       }
