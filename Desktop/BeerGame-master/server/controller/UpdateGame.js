@@ -12,7 +12,7 @@ export default function UpdateGame(io, socket, intData) {
     GameData.findOne({ gameCode: room }, (err, data) => {
         if(err) return console.log("Fehler: " + err)
         //console.log(data)
-        if(data === null) return console.log("Kein Datensatz gefunden")
+        if(data === null) return console.log("Aucun enregistrement trouvé")
 
         let producer = data.roundData.producer
         let distributor = data.roundData.distributor
@@ -107,7 +107,7 @@ export default function UpdateGame(io, socket, intData) {
         })
         //Daten können verteilt werden, sobald alle Spieler die Bestellung für die aktuelle Runde abgegeben haben
         if(checkIfDataCanBeCommitted) {
-            console.log("Push ausgelöst")
+            console.log("Push déclenché")
 
             const roundOfRaise = data.gameSettings.roundOfRaise
             const startValue = data.gameSettings.startValue
@@ -153,7 +153,7 @@ export default function UpdateGame(io, socket, intData) {
             data.roundData.wholesaler = wholesaler
             data.roundData.retailer = retailer
             data.markModified("roundData")
-            console.log("PRODUCER WERTER VOR DBSAVE")
+            console.log("VALEUR DU PRODUCTEUR AVANT DBSAVE")
             console.log(data.roundData.producer)
             console.log(data)
             data.save()
