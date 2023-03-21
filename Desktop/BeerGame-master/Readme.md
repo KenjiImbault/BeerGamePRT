@@ -1,5 +1,5 @@
-# Beergame - Allgemeine Dokumentation
+# Beergame - Documentation générale
 ## WebApp (Frontend)
-### Eingesetzte Technologien
-- ReactJS [[Dokumentation]](https://reactjs.org/docs/getting-started.html)
-- Socket.IO [[Dokumentation]](https://socket.io/docs/v4/)
+### Technologie utilisées
+- ReactJS [[Documentation]](https://reactjs.org/docs/getting-started.html)
+- Socket.IO [[Documentation]](https://socket.io/docs/v4/)
