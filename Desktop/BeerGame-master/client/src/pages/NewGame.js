@@ -121,7 +121,7 @@ function NewGame(props) {
             alert("L'augmentation de la demande doit être une valeur numérique!")
         }
         /*else if(!checkIfStringIsValid(roundOfRaise, "numeric") || roundOfRaise > rounds || roundOfRaise < 1) {
-            alert("Die Runde, in der die Nachfragemenge erhöht wird, muss ein numerischer Wert sein und darf nicht kleiner als 1 sowie größer als die Anzahl der Runden sein!")
+            alert("Le tour dans lequel la quantité demandée est augmentée doit être une valeur numérique et ne peut pas être inférieur à 1 et supérieur au nombre de tours !")
         }*/
         else {
             socket.emit("game_create", {
