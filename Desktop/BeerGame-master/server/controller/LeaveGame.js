@@ -11,7 +11,7 @@ export default function LeaveGame(io, socket) {
       {"playerData.wholesaler": sid},
       {"playerData.retailer": sid},
     ]}, (err, obj) => {
-    if(obj === null) return console.log("[Disconnect-Prüfung] Spieler ist in keinem Spiel aktiv!")
+    if(obj === null) return console.log("[Disconnect Check] Le joueur n'est actif dans aucun jeu !")
     else {
       //Si le joueur est dans un jeu lors de la déconnexion, l'affectation dans la base de données est annulée
       if(obj.playerData.producer === sid) {
@@ -29,7 +29,7 @@ export default function LeaveGame(io, socket) {
       obj.save()
       if(io.sockets.adapter.rooms.get(obj.gameCode) !== undefined)
         io.to(obj.gameCode).emit("update_room_size",io.sockets.adapter.rooms.get(obj.gameCode).size)
-      console.log("[Disconnect-Prüfung] Ein Spieler wurde von einem Spiel abgemeldet!")
+      console.log("[Disconnect Check] Un joueur a été déconnecté d'un jeu !")
     }
   })
 }
