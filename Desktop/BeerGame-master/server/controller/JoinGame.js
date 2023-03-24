@@ -8,8 +8,8 @@ import DBGame from "../model/DBGame.js";
 export default function JoinGame(io, socket, intData) {
   const room = intData.gameCode
   const role = intData.selectedRole
-  console.log("Raum = " + room)
-  console.log("Rolle = " + role)
+  console.log("Room = " + room)
+  console.log("Rôle = " + role)
   //Si le joueur n'a pas encore de rôle
   if(checkIfPlayerIsInAnyRoom(io, socket.id))
     return socket.emit("join_to_game", new SocketError("Le joueur est déjà connecté à un jeu."))
@@ -42,14 +42,15 @@ export default function JoinGame(io, socket, intData) {
         }
         data.save()
         let selectedRoles = []
-        if(data.playerData.producer !== "NA") selectedRoles.push("producteur")
-        if(data.playerData.distributor !== "NA") selectedRoles.push("distributeur")
-        if(data.playerData.wholesaler !== "NA") selectedRoles.push("grossiste")
-        if(data.playerData.retailer !== "NA") selectedRoles.push("détaillants")
+        if(data.playerData.producer !== "NA") selectedRoles.push("Produzent")
+        if(data.playerData.distributor !== "NA") selectedRoles.push("Verteiler")
+        if(data.playerData.wholesaler !== "NA") selectedRoles.push("Großhändler")
+        if(data.playerData.retailer !== "NA") selectedRoles.push("Einzelhändler")
         io.to(room).emit("update_room_size", {
           roomSize: io.sockets.adapter.rooms.get(room).size,
           selectedRoles
         })
+        console.log("Un joueur vient de rejoindre la partie")
       }
       else {
         if(io.sockets.adapter.rooms.get(room).size >= 4)
