@@ -10,7 +10,7 @@ export default function UpdateGame(io, socket, intData) {
     const GameData = mongoose.model("DBGame", DBGame)
     //GameData.findOne({ gameCode: room }, (err, data) => {
     GameData.findOne({ gameCode: room }, (err, data) => {
-        if(err) return console.log("Fehler: " + err)
+        if(err) return console.log("Erreur: " + err)
         //console.log(data)
         if(data === null) return console.log("Aucun enregistrement trouvé")
 
