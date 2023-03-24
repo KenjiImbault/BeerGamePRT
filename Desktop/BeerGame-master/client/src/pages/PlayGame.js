@@ -6,31 +6,31 @@ import Countdown from '../lib/Countdown';
 
 function PlayGame(props) {
 
-    const gameCode = JSON.parse(localStorage.getItem("room")) //Spielcode
-    const selectedRole = JSON.parse(localStorage.getItem("role")) //Gewählte Spielrolle
-    // ==> 1: Produzent | 2: Verteiler | 3: Großhändler | 4: Einzelhändler
+    const gameCode = JSON.parse(localStorage.getItem("room")) //Code du jeu
+    const selectedRole = JSON.parse(localStorage.getItem("role")) //Rôle de jeu choisi
+    // ==> 1: Producteur | 2: Distributeur | 3: Grossiste | 4: Détaillant
 
     const socket = props.socketId
     const hoursMinSecs = {hours:0, minutes: 0, seconds: 60}
 
-    const [orderValue, setOrderValue] = useState("") //Bestellung
-    const [inputActive, setInputActive] = useState(true) //Aktiviert oder Deaktiviert das Eingabefeld für die Bestellung
-    const [currentRoomSize, setCurrentRoomSize] = useState(0) //Aktuelle Spieler im Spiel
-    const [currentRoomRoles, setCurrentRoomRoles] = useState([]) //Rollen, die bereits vergeben sind
+    const [orderValue, setOrderValue] = useState("") //Commande
+    const [inputActive, setInputActive] = useState(true) //Active ou désactive le champ de saisie de la commande
+    const [currentRoomSize, setCurrentRoomSize] = useState(0) //Joueurs actuels dans le jeu
+    const [currentRoomRoles, setCurrentRoomRoles] = useState([]) //Rôles déjà occupés
 
-    const [gameRounds, setGameRounds] = useState(0) //Spielrunden (insgesamt)
-    const [currentRound, setCurrentRound] = useState(1) //Aktuelle Spielrunde
-    const [stock, setStock] = useState(0) //Lagerbestand
-    const [delay, setDelay] = useState(0) //Verzögerung
-    const [next1WeekDelivery, setNext1WeekDelivery] = useState(0) //Lieferung nächste Woche
-    const [next2WeekDelivery, setNext2WeekDelivery] = useState(0) //Lieferung übernächste Woche
-    const [supplyChainOrder, setSupplyChainOrder] = useState(0) //Lieferanfrage
+    const [gameRounds, setGameRounds] = useState(0) //Tours de jeu (total)
+    const [currentRound, setCurrentRound] = useState(1) //Tour de jeu actuel
+    const [stock, setStock] = useState(0) //Inventaire
+    const [delay, setDelay] = useState(0) //Retard
+    const [next1WeekDelivery, setNext1WeekDelivery] = useState(0) //Livraison la semaine prochaine
+    const [next2WeekDelivery, setNext2WeekDelivery] = useState(0) //Livraison la semaine encore d'après
+    const [supplyChainOrder, setSupplyChainOrder] = useState(0) //Demande de livraison
 
     useEffect(() => {
-      // Update_Player_Data: Wird aufgerufen, wenn alle die Bestellung abgeschickt haben.
-      // Daten werden vom Server berechnet und dann an die Clients gepusht
+      // Update_Player_Data: Appelé quand tout le monde a passé la commande.
+      // Les données sont calculées par le serveur puis transmises aux clients
         socket.on("update_player_data", (data) => {
-            console.log("UpdatePlayer aufgerufen")
+            console.log("Appele UpdatePlayer")
             console.log(data)
             setCurrentRound(data.roundData.currentRound)
             console.log(data.roundData.currentRound)
