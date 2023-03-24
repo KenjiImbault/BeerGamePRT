@@ -105,7 +105,7 @@ export default function UpdateGame(io, socket, intData) {
         rounds.map(element => {
             if(element !== data.roundData.currentRound+1 || element === []) checkIfDataCanBeCommitted = false
         })
-        //Daten können verteilt werden, sobald alle Spieler die Bestellung für die aktuelle Runde abgegeben haben
+        //Les données peuvent être distribuées une fois que tous les joueurs ont passé des commandes pour le tour en cours
         if(checkIfDataCanBeCommitted) {
             console.log("Push déclenché")
 
