@@ -35,7 +35,7 @@ function NewGame(props) {
                 alert(data.head.errMsg)
             else //S'il n'y a pas d'erreur, la page du jeu est appelée
             {
-                console.log("Rolle gewählt: " + data.body)
+                console.log("Rôle choisi: " + data.body)
                 localStorage.setItem("role", JSON.stringify(data.body.role))
                 localStorage.setItem("room", JSON.stringify(data.body.room))
                 setRedirectComponent(<Redirect to={`/game/play/${data.body.room}`} />)
@@ -76,7 +76,7 @@ function NewGame(props) {
             socket.off("game_choose_role")
             socket.off("game_create")
         }
-    }, [socket]) //Affirmer la fauteuil
+    }, [socket]) //Affirmer le fauteuil
 
     function onJoinGameClick() {
         if(checkIfStringIsValid(gameCode)) {
