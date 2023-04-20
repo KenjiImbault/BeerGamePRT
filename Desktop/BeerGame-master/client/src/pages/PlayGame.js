@@ -67,7 +67,7 @@ function PlayGame(props) {
                 else {
                   setSupplyChainOrder(data.gameSettings.raisedValue)
                 }
-                setSupplyChainOrder(data.roundData.retailer[data.roundData.currentRound-1].supplyChainOrder)
+                setSupplyChainOrder(data.gameSettings.startValue)
             }
         })
         socket.on("initial_data", (data) => {
