@@ -67,7 +67,6 @@ function PlayGame(props) {
                 else {
                   setSupplyChainOrder(data.gameSettings.raisedValue)
                 }
-                setSupplyChainOrder(data.gameSettings.startValue)
             }
         })
         socket.on("initial_data", (data) => {
