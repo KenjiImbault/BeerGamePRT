@@ -133,16 +133,16 @@ export default function UpdateGame(io, socket, intData) {
             wholesaler = values[0]
             delivery = values[1]
 
-          if(currentRound < roundOfRaise) {
+          /*if(currentRound < roundOfRaise) {*/
             values = CalculateNewValues(4, retailer, startValue, delivery, currentRound)
             retailer = values[0]
             delivery = values[1]
-          }
+         /* }
           else {
             values = CalculateNewValues(4, retailer, raisedValue, delivery, currentRound)
             retailer = values[0]
             delivery = values[1]
-          }
+          }*/
 
 
             console.log("Delivery: " + delivery)
