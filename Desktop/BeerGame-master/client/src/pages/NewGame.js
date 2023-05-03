@@ -146,7 +146,7 @@ function NewGame(props) {
     }
 
     function getSelectedRounds(e) {
-        setRounds(e.target.value)
+        setRounds(e)
     }
 
     let options = ""
@@ -160,15 +160,13 @@ function NewGame(props) {
                     description={"Signes autorisés: A-Z, a-z, 0-9"}
                 />
                 <span>Choisissez le nombre de tours de jeu:</span>
-                <div className={"select_rounds"} onChange={getSelectedRounds}>
-                    <div>
-                        <input id={"26"} type={"radio"} name={"rounds"} value={26}/>
-                        <label htmlFor={"26"}>26 tours</label>
-                    </div>
-                    <div>
-                        <input id={"52"} type={"radio"} name={"rounds"} value={52} />
-                        <label htmlFor={"52"}>52 tours</label>
-                    </div>
+                <div className={"select_rounds"}>
+                <InputField 
+                    name={"Rounds"}
+                    getValue={getSelectedRounds}
+                    description={"Par exemple: 15"}
+                    
+                /> 
                 </div>
                 
                 <span>Choisissez le stock de départ des joueurs:</span>
