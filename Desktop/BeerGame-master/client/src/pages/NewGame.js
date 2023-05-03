@@ -160,7 +160,7 @@ function NewGame(props) {
                     description={"Signes autorisés: A-Z, a-z, 0-9"}
                 />
                 <span>Choisissez le nombre de tours de jeu:</span>
-                <div className={"select_rounds"}>
+                <div>
                 <InputField 
                     name={"Rounds"}
                     getValue={getSelectedRounds}
