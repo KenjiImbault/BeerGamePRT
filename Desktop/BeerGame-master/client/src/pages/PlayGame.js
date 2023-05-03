@@ -107,6 +107,7 @@ function PlayGame(props) {
         )
     }
     else {
+        if(currentRound<=gameRounds){
         let inputAndButton = <></>
         if(inputActive) {
             inputAndButton = (
@@ -242,6 +243,11 @@ function PlayGame(props) {
         )
     }
     
+    else{
+        return (<span>The game is over!</span>)
+    }
+    
+}
 
 }
 
