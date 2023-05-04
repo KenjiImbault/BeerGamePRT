@@ -19,12 +19,14 @@ function PlayGame(props) {
     const [currentRoomRoles, setCurrentRoomRoles] = useState([]) //Rôles déjà occupés
 
     const [gameRounds, setGameRounds] = useState(0) //Tours de jeu (total)
-    const [currentRound, setCurrentRound] = useState(1) //Tour de jeu actuel
+    const [currentRound, setCurrentRound] = useState(0) //Tour de jeu actuel
     const [stock, setStock] = useState(0) //Inventaire
     const [delay, setDelay] = useState(0) //Retard
     const [next1WeekDelivery, setNext1WeekDelivery] = useState(0) //Livraison la semaine prochaine
     const [next2WeekDelivery, setNext2WeekDelivery] = useState(0) //Livraison la semaine encore d'après
     const [supplyChainOrder, setSupplyChainOrder] = useState(0) //Demande de livraison
+
+    
 
     useEffect(() => {
       // Update_Player_Data: Appelé quand tout le monde a passé la commande.
@@ -61,13 +63,11 @@ function PlayGame(props) {
                 setDelay(data.roundData.retailer[data.roundData.currentRound-1].delay)
                 setNext1WeekDelivery(data.roundData.retailer[data.roundData.currentRound-1].next1Week)
                 setNext2WeekDelivery(data.roundData.retailer[data.roundData.currentRound-1].next2Week)
-                if(currentRound < data.gameSettings.roundOfRaise) {
-                  setSupplyChainOrder(data.gameSettings.startValue)
+                
+                setSupplyChainOrder(data.roundData.demandClient)
                 }
-                else {
-                  setSupplyChainOrder(data.gameSettings.raisedValue)
-                }
-            }
+
+            
         })
         socket.on("initial_data", (data) => {
             console.log(data)
@@ -89,7 +89,6 @@ function PlayGame(props) {
         })
         setOrderValue("")
     }
-
     if(currentRoomSize < 4) {
         return (
             <div>
