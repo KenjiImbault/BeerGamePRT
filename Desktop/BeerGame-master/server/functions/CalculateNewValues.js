@@ -37,9 +37,10 @@ export default function CalculateNewValues(roleId, role, orderValueByNextRole, d
   }
   else {
     const diff = orderValueByNextRole - newStock
+    deliveryValueToNextRole = newStock
     newStock = 0
     newDelay = newDelay + diff
-    deliveryValueToNextRole = diff
+    
   }
 
   role[currentRound].stock = newStock
