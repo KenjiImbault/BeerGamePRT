@@ -25,9 +25,9 @@ div.tile {
 }
 
 div.tile.selected {
-  background-color: #f39c12;
+  background-color: #2980B9;
   color: white;
-  border-color: #ce800e;
+  border-color: #2471A3;
 }
 
 div.tile.disabled {
