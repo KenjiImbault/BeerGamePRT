@@ -15,7 +15,8 @@ header {
 header h1 {
   font-weight: 400;
   font-size: 3rem;
-  background: url("../res/icons/beer.svg") no-repeat;
+  background: url("../res/icons/Logo_Reseau_Polytech.svg") no-repeat;
+  background-size: contain;
   padding-left: 65px;
 }
 
@@ -23,7 +24,8 @@ header h1 span.orange {
   color: #f39c12;
 }
 
-header h1 span.italic {
+.italic {
+  margin-left: 35px;  
   font-style: italic;
 }
 
