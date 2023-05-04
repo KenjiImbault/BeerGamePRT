@@ -8,10 +8,10 @@ export default function UpdateGame(io, socket, intData) {
     const role = intData.selectedRole
     const orderValue = intData.orderValue
     const GameData = mongoose.model("DBGame", DBGame)
-    //GameData.findOne({ gameCode: room }, (err, data) => {
+
     GameData.findOne({ gameCode: room }, (err, data) => {
         if(err) return console.log("Erreur: " + err)
-        //console.log(data)
+
         if(data === null) return console.log("Aucun enregistrement trouvé")
 
         let producer = data.roundData.producer
@@ -109,11 +109,18 @@ export default function UpdateGame(io, socket, intData) {
         if(checkIfDataCanBeCommitted) {
             console.log("Push déclenché")
 
-            const roundOfRaise = data.gameSettings.roundOfRaise
-            const startValue = data.gameSettings.startValue
-            const raisedValue = data.gameSettings.raisedValue
+            const selectedDemandB = data.gameSettings.selectedDemand
+            const constDemandB = data.gameSettings.constDemand
+            const minDemandB = data.gameSettings.minDemand
+            const maxDemandB = data.gameSettings.maxDemand
+            const rampCoeffB = data.gameSettings.rampCoeff
+            const rampShiftB = data.gameSettings.rampShift
+            const sinCoeffB = data.gameSettings.sinCoeff
+            const sinFreqB = data.gameSettings.sinFreq
+            const sinPhaseB = data.gameSettings.sinPhase
+            const sinShiftB = data.gameSettings.sinShift
 
-            let values = [], delivery = 0
+            let values = [], delivery = 0, demandClient=0
 
             console.log("PRODUCER:")
             console.log(producer)
@@ -121,9 +128,9 @@ export default function UpdateGame(io, socket, intData) {
             producer = values[0]
             delivery = values[1]
 
-          console.log("PRODUCER AFTER:")
-          console.log(producer)
-          console.log(delivery)
+            console.log("PRODUCER AFTER:")
+            console.log(producer)
+            console.log(delivery)
 
             values = CalculateNewValues(2, distributor, wholesaler[currentRound].order, delivery, currentRound)
             distributor = values[0]
@@ -133,29 +140,35 @@ export default function UpdateGame(io, socket, intData) {
             wholesaler = values[0]
             delivery = values[1]
 
-          /*if(currentRound < roundOfRaise) {*/
-            values = CalculateNewValues(4, retailer, startValue, delivery, currentRound)
-            retailer = values[0]
-            delivery = values[1]
-         /* }
-          else {
-            values = CalculateNewValues(4, retailer, raisedValue, delivery, currentRound)
-            retailer = values[0]
-            delivery = values[1]
-          }*/
-
-
-            console.log("Delivery: " + delivery)
+        if(selectedDemandB===0){
+            //Constant demand
+            demandClient = constDemandB
+        }
+        else if(selectedDemandB===1){
+            //Random demand between min and max values
+            demandClient = Math.floor(Math.random() * (maxDemandB - minDemandB) ) + minDemandB
+        }
+        else if(selectedDemandB===2){
+            //Ramp value of equation y=a*t+b
+            //Todo: If calculated demand is negative, put the demand at 0
+            demandClient = rampCoeffB*currentRound+rampShiftB
+        }
+        else if(selectedDemandB===3){
+            //Sinus value of equation y=a*sin(2*pi*f*t+p)+b
+            //Todo: If calculated demand is negative, put the demand at 0
+            demandClient = Math.round(sinCoeffB*Math.sin(2*3.14*sinFreqB*currentRound+sinPhaseB)+sinShiftB)
+        }
+        values=CalculateNewValues(4, retailer, demandClient, delivery, currentRound)
+        retailer = values[0]
+        delivery = values[1]
 
             data.roundData.currentRound++
             data.roundData.producer = producer
             data.roundData.distributor = distributor
             data.roundData.wholesaler = wholesaler
             data.roundData.retailer = retailer
+            data.roundData.demandClient = demandClient
             data.markModified("roundData")
-            console.log("VALEUR DU PRODUCTEUR AVANT DBSAVE")
-            console.log(data.roundData.producer)
-            console.log(data)
             data.save()
             io.to(room).emit("update_player_data", data)
         }
