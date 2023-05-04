@@ -7,7 +7,7 @@ class Layout extends React.Component {
     return (
       <>
         <header>
-          <h1><span className={"orange"}>Welniz</span> | <span className={"italic"}>Beergame</span></h1>
+          <h1>   <span className={"italic"}> | Beergame</span></h1>
         </header>
         <main>
           { this.props.children }
