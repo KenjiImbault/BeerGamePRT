@@ -11,14 +11,24 @@ function NewGame(props) {
 
     const socket = props.socketId
 
+    const [demandClient, ] = useState(0)
+
     const [selectedGameMode, setSelectedGameMode] = useState(0)
     const [selectedRole, setSelectedRole] = useState(0)
     const [gameCode, setGameCode] = useState("")
     const [rounds, setRounds] = useState(0)
     const [startStock, setStartStock]= useState(0)
-    const [startValue, setStartValue]= useState(0)
-    const [raisedValue, setRaisedValue]= useState(0)
-    const [roundOfRaise, setRoundOfRaise]= useState(0)
+    const [selectedDemand, setSelectedDemand]= useState(0)
+
+    const [constDemand, setConstDemand] = useState(0)
+    const [minDemand, setMinDemand] = useState(0)
+    const [maxDemand, setMaxDemand] = useState(0)
+    const [rampCoeff, setRampCoeff] = useState(0)
+    const [rampShift, setRampShift] = useState(0)
+    const [sinCoeff, setSinCoeff] = useState(0)
+    const [sinFreq, setSinFreq] = useState(0)
+    const [sinPhase, setSinPhase] = useState(0)
+    const [sinShift, setSinShift] = useState(0)
 
     const [selectRoleMenu, setSelectRoleMenu] = useState(false)
     const [disabledRoles, setDisabledRoles] = useState([0,0,0,0])
@@ -114,12 +124,6 @@ function NewGame(props) {
         else if(!checkIfStringIsValid(startStock, "numeric")) {
             alert("Sélectionnez le nombre de tours!")
         }
-        else if(!checkIfStringIsValid(startValue, "numeric")) {
-            alert("La quantité de demande doit être une valeur numérique!")
-        }
-        else if(!checkIfStringIsValid(raisedValue, "numeric")) {
-            alert("L'augmentation de la demande doit être une valeur numérique!")
-        }
         /*else if(!checkIfStringIsValid(roundOfRaise, "numeric") || roundOfRaise > rounds || roundOfRaise < 1) {
             alert("Le tour dans lequel la quantité demandée est augmentée doit être une valeur numérique et ne peut pas être inférieur à 1 et supérieur au nombre de tours !")
         }*/
@@ -128,14 +132,23 @@ function NewGame(props) {
                 gameCode,
                 gameCreated: new Date(),
                 gameSettings: {
+                    
                     rounds,
                     startStock,
-                    startValue,
-                    raisedValue,
-                    roundOfRaise
+                    selectedDemand,
+                    constDemand,
+                    minDemand,
+                    maxDemand,
+                    rampCoeff,
+                    rampShift,
+                    sinCoeff,
+                    sinFreq,
+                    sinPhase,
+                    sinShift
                 },
                 roundData: {
                     currentRound: 0,
+                    demandClient,
                     producer: [],
                     distributor: [],
                     wholesaler: [],
@@ -149,8 +162,37 @@ function NewGame(props) {
         setRounds(e)
     }
 
+    function getSelectedDemand(e){
+        console.log("hey")
+        console.log(e.target.value)
+        setSelectedDemand(e.target.value)
+    }
+
+
     let options = ""
+    let differentDemands = ""
     if(selectedGameMode === 1) {
+        differentDemands = (
+        <div>
+        <span>Choisissez les paramètres de la demande: (ignorer si non concerné)</span>
+        <InputField name="Enter value of constant..." getValue={setConstDemand} />
+        <br />
+        
+	    <InputField name="Enter minimum value of Random..." getValue={setMinDemand} />
+	    <InputField name="Enter maximum value of Random..." getValue={setMaxDemand} />
+        <br />
+
+	    <InputField name="Enter value of the coeff of the ramp..." getValue={setRampCoeff} />
+	    <InputField name="Enter value of the shift of the ramp..." getValue={setRampShift} />
+        <br />
+        <span>Ex: 3.3, 0.18, -0.3, 3.7</span>
+    	<InputField name="Enter value of the coeff of the sinus..." getValue={setSinCoeff} />
+	    <InputField name="Enter value of the frequence of the sinus..." getValue={setSinFreq} />
+      	<InputField name="Enter value of the phase of the sinus..." getValue={setSinPhase} />
+	    <InputField name="Enter value of the shift of the sinus..." getValue={setSinShift} />
+        </div>
+        )
+
         options = (
             <div className={"options_wrapper"}>
                 <span>Entrez le code de jeu:</span>
@@ -165,8 +207,7 @@ function NewGame(props) {
                     name={"Rounds"}
                     getValue={getSelectedRounds}
                     description={"Par exemple: 15"}
-                    
-                /> 
+                />
                 </div>
                 
                 <span>Choisissez le stock de départ des joueurs:</span>
@@ -176,24 +217,24 @@ function NewGame(props) {
                     description={"Par exemple: 15"}
                     
                 /> 
-                <span>Choisissez la quantité de demande:</span>
-                <InputField
-                    name={"Nachfragemenge"}
-                    getValue={setStartValue}
-                    description={"Par exemple: 5"}
-                /> 
-                <span>Choisissez l'augmentation de la demande:</span>
-                <InputField
-                    name={"erhöhte Nachfragemenge"}
-                    getValue={setRaisedValue}
-                    description={"Par exemple: 10"}
-                /> 
-                <span>Choisissez le tour dans lequel la quantité de demande augmente:</span>
-                <InputField
-                    name={"Runde der Erhöhung"}
-                    getValue={setRoundOfRaise}
-                    description={"Selon le nombre de matchs de jeu 17 ou 35"}
-                />
+                <span>Choisissez le type de demande:</span>
+                <div className={"select_demand"} onChange={getSelectedDemand}>
+                    <div>
+                        <input id="{const}" type={"radio"} name={"demand"} value={0} />
+                        <label htmlFor={"const"}>Constant</label>
+                        <br />
+                        <input id="{rnd}" type={"radio"} name={"demand"} value={1} />
+                        <label htmlFor={"rnd"}>Random</label>
+                        <br />
+                        <input id="{ramp}" type={"radio"} name={"demand"} value={2} />
+                        <label htmlFor={"ramp"}>Ramp</label>
+                        <br />
+                        <input id="{sin}" type={"radio"} name={"demand"} value={3} />
+                        <label htmlFor={"sin"}>Sinus</label>
+                    </div>
+                    </div>
+                        {differentDemands}
+                
                 <Button onClick={createGame}>créer un jeu</Button>
             </div>
         )
