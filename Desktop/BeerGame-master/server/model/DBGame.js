@@ -20,18 +20,56 @@ const DBGame = new Schema({
             type: Number,
             required: true
         },
-        startValue: {
+        selectedDemand: {
             type: Number,
-            required: true
+            required: true,
+            default: 0
         },
-        raisedValue: {
+        constDemand: {
             type: Number,
-            required: true
+            required: true,
+            default: 3
         },
-        roundOfRaise: {
+        minDemand: {
             type: Number,
-            required: true
-        } 
+            required: true,
+            default: 1
+        },
+        maxDemand: {
+            type: Number,
+            required: true,
+            default: 5
+        },
+        rampCoeff: {
+            type: Number,
+            required: true,
+            default: 1
+        },
+        rampShift: {
+            type: Number,
+            required: true,
+            default: 0
+        },
+        sinCoeff: {
+            type: Number,
+            required: true,
+            default: 3.3
+        },
+        sinFreq: {
+            type: Number,
+            required: true,
+            default: 0.18
+        },
+        sinPhase: {
+            type: Number,
+            required: true,
+            default: -0.3
+        },
+        sinShift: {
+            type: Number,
+            required: true,
+            default: 3.7
+        },
     },
     playerData: {
         producer: {
@@ -60,6 +98,10 @@ const DBGame = new Schema({
             type: Number,
             required: true,
             default: 0
+        },
+        demandClient:{
+            type: Number,
+            required: true,
         },
         producer: {
             type: Array
