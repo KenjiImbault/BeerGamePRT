@@ -245,7 +245,6 @@ function PlayGame(props) {
     else{
         function exportData(){
             console.log("Exporting data")
-            console.log(dataV.roundData)
             socket.emit("endGame",{})
         }
         return (
