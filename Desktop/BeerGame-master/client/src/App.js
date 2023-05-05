@@ -15,7 +15,7 @@ function App() {
   //Connectez-vous au serveur
   //ATTENTION: HTTPS ne peut être utilisé comme protocole que si un certificat est configuré!
   //L'utilisation d'un certificat est rendue possible par l'utilisation de Nginx comme proxy inverse!
-  const socket = io.connect("process.env.IP")
+  const socket = io.connect(process.env.IP)
   //const socket = io.connect("https://api-beergame.usb-sys.de")
   useEffect(() => {
       //Callback um zu prüfen, ob die Verbindung erfolgreich hergestellt wurde
