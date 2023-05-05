@@ -5,7 +5,7 @@ import SocketError from "../model/SocketError.js";
 import SocketSuccess from "../model/SocketSuccess.js";
 import exceljs from "exceljs";
 
-const socket = io.connect(process.env.IP)
+const socket = io.connect("http://localhost:3001")
   //const socket = io.connect("https://api-beergame.usb-sys.de")
   useEffect(() => {
 
