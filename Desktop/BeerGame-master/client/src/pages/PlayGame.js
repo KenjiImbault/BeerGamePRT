@@ -243,7 +243,18 @@ function PlayGame(props) {
     }
     
     else{
-        return (<span>The game is over!</span>)
+        function exportData(){
+            console.log("Exporting data")
+            console.log(dataV.roundData)
+            socket.emit("endGame",{})
+        }
+        return (
+        <div>
+        <span>The game is over!</span>
+        <br />
+        <Button onClick={exportData}>Export data</Button>
+        </div>
+        )
     }
     
 }
