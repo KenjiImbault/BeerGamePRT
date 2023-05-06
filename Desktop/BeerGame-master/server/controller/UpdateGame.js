@@ -168,6 +168,7 @@ export default function UpdateGame(io, socket, intData) {
             data.roundData.wholesaler = wholesaler
             data.roundData.retailer = retailer
             data.roundData.demandClient = demandClient
+            data.roundData.demandClientList.push(demandClient)
             data.markModified("roundData")
             data.save()
             io.to(room).emit("update_player_data", data)
