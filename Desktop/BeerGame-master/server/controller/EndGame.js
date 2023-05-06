@@ -23,7 +23,7 @@ export default function EndGame(io, socket, data) {
 
         
         // Ajouter l'en-tête du tableau
-        worksheetClient.addRow(['test']);
+        worksheetClient.addRow(['demandClient']);
         worksheetRetailer.addRow(['stock','order','delay','next1Week','next2Week']);
         worksheetWholesaler.addRow(['stock','order','delay','next1Week','next2Week']);
         worksheetDistributor.addRow(['stock','order','delay','next1Week','next2Week']);
@@ -38,10 +38,11 @@ export default function EndGame(io, socket, data) {
         numberOfRounds = data[lastGame-1].roundData.producer.length
         for (let i = 0;i<numberOfRounds;i++){
           
-          worksheetRetailer.addRow([roundDataLastGame.retailer[i].stock,roundDataLastGame.retailer[i].order,roundDataLastGame.retailer[i].delay,0,0])
-          worksheetWholesaler.addRow([roundDataLastGame.wholesaler[i].stock,roundDataLastGame.wholesaler[i].order,roundDataLastGame.wholesaler[i].delay,0,0])
-          worksheetDistributor.addRow([roundDataLastGame.distributor[i].stock,roundDataLastGame.distributor[i].order,roundDataLastGame.distributor[i].delay,0,0])
-          worksheetProducer.addRow([roundDataLastGame.producer[i].stock,roundDataLastGame.producer[i].order,roundDataLastGame.producer[i].delay,0,0])
+          worksheetClient.addRow([roundDataLastGame.demandClientList[i]]);
+          worksheetRetailer.addRow([roundDataLastGame.retailer[i].stock,roundDataLastGame.retailer[i].order,roundDataLastGame.retailer[i].delay,roundDataLastGame.retailer[i].next1Week,roundDataLastGame.retailer[i].next2Week])
+          worksheetWholesaler.addRow([roundDataLastGame.wholesaler[i].stock,roundDataLastGame.wholesaler[i].order,roundDataLastGame.wholesaler[i].delay,roundDataLastGame.wholesaler[i].next1Week,roundDataLastGame.wholesaler[i].next2Week])
+          worksheetDistributor.addRow([roundDataLastGame.distributor[i].stock,roundDataLastGame.distributor[i].order,roundDataLastGame.distributor[i].delay,roundDataLastGame.distributor[i].next1Week,roundDataLastGame.distributor[i].next2Week])
+          worksheetProducer.addRow([roundDataLastGame.producer[i].stock,roundDataLastGame.producer[i].order,roundDataLastGame.producer[i].delay,roundDataLastGame.producer[i].next1Week,roundDataLastGame.producer[i].next2Week])
         }
       
         // Enregistrer le fichier Excel
