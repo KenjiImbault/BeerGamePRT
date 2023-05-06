@@ -153,7 +153,7 @@ function PlayGame(props) {
             roleName = "Einzelhändler"
         }
 
-        function endGame()
+        function endGameBtn()
         {
             console.log("End Game")
             setCurrentRound(gameRounds+1)
@@ -199,7 +199,7 @@ function PlayGame(props) {
                 <div className={"grid_play2"}>
                     <div className={"playground2"}>
                         <div className={"KPItable"}>
-                        <Button onClick={endGame}>End the game</Button>
+                        <Button onClick={endGameBtn}>End the game</Button>
                         </div>
                     </div>
                 </div>
