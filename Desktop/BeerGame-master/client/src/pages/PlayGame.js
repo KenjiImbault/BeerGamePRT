@@ -2,7 +2,6 @@ import "../styles/pages/PlayGame.css"
 import InputField from "../components/form/InputField"
 import {useEffect, useState} from "react";
 import Button from "../components/form/Button";
-import Countdown from '../lib/Countdown';
 
 function PlayGame(props) {
 
@@ -11,7 +10,6 @@ function PlayGame(props) {
     // ==> 1: Producteur | 2: Distributeur | 3: Grossiste | 4: Détaillant
 
     const socket = props.socketId
-    const hoursMinSecs = {hours:0, minutes: 0, seconds: 60}
 
     const [orderValue, setOrderValue] = useState("") //Commande
     const [inputActive, setInputActive] = useState(true) //Active ou désactive le champ de saisie de la commande
@@ -155,13 +153,16 @@ function PlayGame(props) {
             roleName = "Einzelhändler"
         }
 
-
+        function endGame()
+        {
+            console.log("End Game")
+            setCurrentRound(gameRounds+1)
+        }
         return (
             <div>
                 <div className={"grid_play"}>
                     <div className={"playground"}>
                         <div className={"timer"}>
-                            <Countdown hoursMinSecs={hoursMinSecs}/>
                             <p>Round {currentRound}/{gameRounds}</p>
                         </div>
                         <div className={"wrapper_img"}>
@@ -198,43 +199,7 @@ function PlayGame(props) {
                 <div className={"grid_play2"}>
                     <div className={"playground2"}>
                         <div className={"KPItable"}>
-                            <table>
-                                <tr>
-                                    <th>Round</th>
-                                    <th>Coûts de stockage</th>
-                                    <th>coût total</th>
-                                    <th>Taux de commande parfait</th>
-                                    <th>Inventaire moyen</th>
-                                    <th>Hebdomadaire avec résidu de livraison</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20</td>
-                                    <td>20</td>
-                                    <td>80%</td>
-                                    <td>10</td>
-                                    <td>0%</td>
-
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>20</td>
-                                    <td>40</td>
-                                    <td>50%</td>
-                                    <td>15</td>
-                                    <td>50%</td>
-
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>10</td>
-                                    <td>50</td>
-                                    <td>66%</td>
-                                    <td>13</td>
-                                    <td>33%</td>
-
-                                </tr>
-                            </table>
+                        <Button onClick={endGame}>End the game</Button>
                         </div>
                     </div>
                 </div>
