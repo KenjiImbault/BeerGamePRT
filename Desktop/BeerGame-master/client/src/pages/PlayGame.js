@@ -24,12 +24,13 @@ function PlayGame(props) {
     const [next2WeekDelivery, setNext2WeekDelivery] = useState(0) //Livraison la semaine encore d'après
     const [supplyChainOrder, setSupplyChainOrder] = useState(0) //Demande de livraison
 
-    
+    const[dataV, setDataV] = useState(0)    
 
     useEffect(() => {
       // Update_Player_Data: Appelé quand tout le monde a passé la commande.
       // Les données sont calculées par le serveur puis transmises aux clients
         socket.on("update_player_data", (data) => {
+            setDataV(data)
             console.log("Appele UpdatePlayer")
             console.log(data)
             setCurrentRound(data.roundData.currentRound)
@@ -210,7 +211,7 @@ function PlayGame(props) {
     else{
         function exportData(){
             console.log("Exporting data")
-            socket.emit("endGame",{})
+            socket.emit("endGame",{dataV})
         }
         return (
         <div>
