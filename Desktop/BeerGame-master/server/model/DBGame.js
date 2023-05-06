@@ -103,6 +103,9 @@ const DBGame = new Schema({
             type: Number,
             required: true,
         },
+        demandClientList:{
+            type: Array
+        },
         producer: {
             type: Array
         },
