@@ -107,7 +107,6 @@ export default function UpdateGame(io, socket, intData) {
         })
         //Les données peuvent être distribuées une fois que tous les joueurs ont passé des commandes pour le tour en cours
         if(checkIfDataCanBeCommitted) {
-            console.log("Push déclenché")
 
             const selectedDemandB = data.gameSettings.selectedDemand
             const constDemandB = data.gameSettings.constDemand
@@ -122,15 +121,9 @@ export default function UpdateGame(io, socket, intData) {
 
             let values = [], delivery = 0, demandClient=0
 
-            console.log("PRODUCER:")
-            console.log(producer)
             values = CalculateNewValues(1, producer, distributor[currentRound].order, 0, currentRound)
             producer = values[0]
             delivery = values[1]
-
-            console.log("PRODUCER AFTER:")
-            console.log(producer)
-            console.log(delivery)
 
             values = CalculateNewValues(2, distributor, wholesaler[currentRound].order, delivery, currentRound)
             distributor = values[0]
