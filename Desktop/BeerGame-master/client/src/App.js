@@ -9,7 +9,6 @@ import NewGame from "./pages/NewGame";
 import NotFound from "./pages/NotFound";
 import PlayGame from "./pages/PlayGame";
 import Message from "./components/Message";
-import End from "./pages/End";
 
 function App() {
   //Connectez-vous au serveur
@@ -40,9 +39,6 @@ function App() {
           </Route>
           <Route path={"/404"}>
             <NotFound />
-          </Route>
-          <Route path={"/end"}>
-            <End/>
           </Route>
           <Route path={"*"}>
             <Redirect to={"/404"} />
