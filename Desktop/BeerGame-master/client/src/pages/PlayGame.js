@@ -111,10 +111,10 @@ function PlayGame(props) {
             inputAndButton = (
                 <>
                     <InputField
-                        name={"Bestellmenge"}
+                        name={"OrderQuantity"}
                         getValue={setOrderValue}
                         setValue={orderValue}
-                        description={"Zulässige Zeichen: 0-9"}
+                        description={"Allowed Characters: 0-9"}
                     />
                     <Button onClick={submitOrder}>Commande</Button>
                 </>
@@ -124,10 +124,10 @@ function PlayGame(props) {
             inputAndButton = (
                 <>
                     <InputField
-                        name={"Bestellmenge"}
+                        name={"OrderQuantity"}
                         getValue={setOrderValue}
                         setValue={orderValue}
-                        description={"Zulässige Zeichen: 0-9"}
+                        description={"Allowed Characters: 0-9"}
                         disabled={true}
                     />
                     <Button onClick={submitOrder}>Commande</Button>
@@ -139,19 +139,19 @@ function PlayGame(props) {
         let roleName = ""
         if(selectedRole === 1) {
             roleIcon = "/icons/factory.svg"
-            roleName = "Produzent"
+            roleName = "Producer"
         }
         else if(selectedRole === 2) {
             roleIcon = "/icons/box.svg"
-            roleName = "Verteiler"
+            roleName = "Distributor"
         }
         else if(selectedRole === 3) {
             roleIcon = "/icons/wholesale.svg"
-            roleName = "Großhändler"
+            roleName = "Wholesaler"
         }
         else {
             roleIcon = "/icons/shop.svg"
-            roleName = "Einzelhändler"
+            roleName = "Retailer"
         }
 
         function endGameBtn()
