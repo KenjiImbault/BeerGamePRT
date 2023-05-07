@@ -17,6 +17,7 @@
 - Dans l'autre terminal, faire les commandes suivantes:
     cd server
     npm install
+    npm install exceljs
     npm start
 - Sur les machines des joueurs, lancer le navigateur, et taper dans la barre d'url l'adresse IPv4 précédente, en concatenant :3000 après l'IP
 
