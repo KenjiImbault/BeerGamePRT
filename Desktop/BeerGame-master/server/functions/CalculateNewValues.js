@@ -17,12 +17,12 @@ export default function CalculateNewValues(roleId, role, orderValueByNextRole, d
     newNextWeek2 = delivery
   }
 
-  //Wenn Bestand >= Bestellung
+  //If Stock >= Order
   if(newStock >= orderValueByNextRole) {
     newStock = newStock - orderValueByNextRole
     deliveryValueToNextRole = orderValueByNextRole
     if(newDelay > 0) {
-      //Wenn Verzögerung - Bestand >= 0
+      //If Delay - Inventory >= 0
       if((newDelay - newStock) >= 0) {
         newDelay = newDelay - newStock
         deliveryValueToNextRole = deliveryValueToNextRole + newStock
