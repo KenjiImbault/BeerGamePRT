@@ -163,8 +163,6 @@ function NewGame(props) {
     }
 
     function getSelectedDemand(e){
-        console.log("hey")
-        console.log(e.target.value)
         setSelectedDemand(e.target.value)
     }
 
@@ -197,7 +195,7 @@ function NewGame(props) {
             <div className={"options_wrapper"}>
                 <span>Entrez le code de jeu:</span>
                 <InputField
-                    name={"Spielcode"}
+                    name={"GameCode"}
                     getValue={setGameCode}
                     description={"Signes autorisés: A-Z, a-z, 0-9"}
                 />
@@ -212,7 +210,7 @@ function NewGame(props) {
                 
                 <span>Choisissez le stock de départ des joueurs:</span>
                 <InputField 
-                    name={"Anfangsbestand"}
+                    name={"StartStock"}
                     getValue={setStartStock}
                     description={"Par exemple: 15"}
                     
@@ -244,7 +242,7 @@ function NewGame(props) {
             <div className={"options_wrapper"}>
                 <span>Entrez le code de jeu:</span>
                 <InputField
-                    name={"Spielcode"}
+                    name={"GameCode"}
                     getValue={setGameCode}
                     invalid={inputError}
                     description={"Signes autorisés: A-Z, a-z, 0-9"}
@@ -255,7 +253,7 @@ function NewGame(props) {
                         <div className={"select_role"}>
                             <Tile
                                 imgSrc={"/icons/factory.svg"}
-                                imgAlt={"Neues Spiel"}
+                                imgAlt={"New Game"}
                                 idKey={1}
                                 getValue={setSelectedRole}
                                 currentSelected={selectedRole}
@@ -263,7 +261,7 @@ function NewGame(props) {
                             >producteur</Tile>
                             <Tile
                                 imgSrc={"/icons/box.svg"}
-                                imgAlt={"Neues Spiel"}
+                                imgAlt={"New Game"}
                                 idKey={2}
                                 getValue={setSelectedRole}
                                 currentSelected={selectedRole}
@@ -271,7 +269,7 @@ function NewGame(props) {
                             >Distributeur</Tile>
                             <Tile
                                 imgSrc={"/icons/wholesale.svg"}
-                                imgAlt={"Neues Spiel"}
+                                imgAlt={"New Game"}
                                 idKey={3}
                                 getValue={setSelectedRole}
                                 currentSelected={selectedRole}
@@ -279,7 +277,7 @@ function NewGame(props) {
                             >Grossiste</Tile>
                             <Tile
                                 imgSrc={"/icons/shop.svg"}
-                                imgAlt={"Neues Spiel"}
+                                imgAlt={"New Game"}
                                 idKey={4}
                                 getValue={setSelectedRole}
                                 currentSelected={selectedRole}
@@ -316,7 +314,7 @@ function NewGame(props) {
             <div className={"tile_wrapper"}>
                 <Tile
                     imgSrc={"/icons/new.svg"}
-                    imgAlt={"Neues Spiel"}
+                    imgAlt={"New Game"}
                     idKey={1}
                     getValue={setSelectedGameMode}
                     currentSelected={selectedGameMode}
@@ -325,7 +323,7 @@ function NewGame(props) {
                 </Tile>
                 <Tile
                     imgSrc={"/icons/people.svg"}
-                    imgAlt={"Spiel beitreten"}
+                    imgAlt={"Enter Game"}
                     idKey={2}
                     getValue={setSelectedGameMode}
                     currentSelected={selectedGameMode}
