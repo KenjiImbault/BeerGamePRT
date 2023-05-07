@@ -42,10 +42,10 @@ export default function JoinGame(io, socket, intData) {
         }
         data.save()
         let selectedRoles = []
-        if(data.playerData.producer !== "NA") selectedRoles.push("Produzent")
-        if(data.playerData.distributor !== "NA") selectedRoles.push("Verteiler")
-        if(data.playerData.wholesaler !== "NA") selectedRoles.push("Großhändler")
-        if(data.playerData.retailer !== "NA") selectedRoles.push("Einzelhändler")
+        if(data.playerData.producer !== "NA") selectedRoles.push("Producer")
+        if(data.playerData.distributor !== "NA") selectedRoles.push("Distributor")
+        if(data.playerData.wholesaler !== "NA") selectedRoles.push("Wholesaler")
+        if(data.playerData.retailer !== "NA") selectedRoles.push("Retailer")
         io.to(room).emit("update_room_size", {
           roomSize: io.sockets.adapter.rooms.get(room).size,
           selectedRoles
@@ -74,10 +74,10 @@ export default function JoinGame(io, socket, intData) {
           }
           data.save()
           let selectedRoles = []
-          if(data.playerData.producer !== "NA") selectedRoles.push("Produzent")
-          if(data.playerData.distributor !== "NA") selectedRoles.push("Verteiler")
-          if(data.playerData.wholesaler !== "NA") selectedRoles.push("Großhändler")
-          if(data.playerData.retailer !== "NA") selectedRoles.push("Einzelhändler")
+          if(data.playerData.producer !== "NA") selectedRoles.push("Producer")
+          if(data.playerData.distributor !== "NA") selectedRoles.push("Distributor")
+          if(data.playerData.wholesaler !== "NA") selectedRoles.push("Wholesaler")
+          if(data.playerData.retailer !== "NA") selectedRoles.push("Retailer")
           io.to(room).emit("update_room_size", {
             roomSize: io.sockets.adapter.rooms.get(room).size,
             selectedRoles
