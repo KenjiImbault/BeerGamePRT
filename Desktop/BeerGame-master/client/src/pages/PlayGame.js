@@ -218,6 +218,8 @@ function PlayGame(props) {
         <span>The game is over!</span>
         <br />
         <Button onClick={exportData}>Export data</Button>
+        <br />
+        <span>(Le fichier sera disponible sur le serveur hébergeur, dans le dossier "server", sous le nom de "export.xlsx")</span>
         </div>
         )
     }
