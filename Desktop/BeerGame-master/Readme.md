@@ -7,7 +7,7 @@
 # Comment lancer l'application ?
 - Ouvrir le dossier dans Visual Studio Code
 - Ouvrir deux terminals dans VSCode
-- Dans un des terminal, faire la commande ipcofnig, et prendre note de l'adresse IPv4
+- Dans un des terminal, faire la commande ipconfig, et prendre note de l'adresse IPv4
 - Dans le dossier client>src, ouvrir App.js, et editer l'adresse IP dans le const socket = io.connect() pour qu'elle correponde a l'adresse IPv4 précédente
 - Dans un des terminal, faire les commandes suivantes:
     cd client
