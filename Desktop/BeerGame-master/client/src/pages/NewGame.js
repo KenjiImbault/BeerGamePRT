@@ -258,7 +258,7 @@ function NewGame(props) {
                                 getValue={setSelectedRole}
                                 currentSelected={selectedRole}
                                 disabled={disabledRoles[0]}
-                            >producteur</Tile>
+                            >Producteur</Tile>
                             <Tile
                                 imgSrc={"/icons/box.svg"}
                                 imgAlt={"New Game"}
