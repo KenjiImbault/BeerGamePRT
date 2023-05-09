@@ -139,19 +139,19 @@ function PlayGame(props) {
         let roleName = ""
         if(selectedRole === 1) {
             roleIcon = "/icons/factory.svg"
-            roleName = "Producer"
+            roleName = "Producteur"
         }
         else if(selectedRole === 2) {
             roleIcon = "/icons/box.svg"
-            roleName = "Distributor"
+            roleName = "Distributeur"
         }
         else if(selectedRole === 3) {
             roleIcon = "/icons/wholesale.svg"
-            roleName = "Wholesaler"
+            roleName = "Grossiste"
         }
         else {
             roleIcon = "/icons/shop.svg"
-            roleName = "Retailer"
+            roleName = "Détaillant"
         }
 
         function endGameBtn()
@@ -173,7 +173,7 @@ function PlayGame(props) {
                         <div className={"line"} />
                         <div className={"wrapper_1"}>
                             <span>Stock: { stock }</span>
-                            <span>Delay: { delay }</span>
+                            <span>Délai: { delay }</span>
                         </div>
                         <div className={"line"} />
                         <div className={"new_order"}>
@@ -200,7 +200,7 @@ function PlayGame(props) {
                 <div className={"grid_play2"}>
                     <div className={"playground2"}>
                         <div className={"KPItable"}>
-                        <Button onClick={endGameBtn}>End the game</Button>
+                        <Button onClick={endGameBtn}>Finir la partie</Button>
                         </div>
                     </div>
                 </div>
@@ -215,9 +215,9 @@ function PlayGame(props) {
         }
         return (
         <div>
-        <span>The game is over!</span>
+        <span>La partie est finie!</span>
         <br />
-        <Button onClick={exportData}>Export data</Button>
+        <Button onClick={exportData}>Exporter les données</Button>
         <br />
         <span>(Le fichier sera disponible sur le serveur hébergeur, dans le dossier "server", sous le nom de "export.xlsx")</span>
         </div>
