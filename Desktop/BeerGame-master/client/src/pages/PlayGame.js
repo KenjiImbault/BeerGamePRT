@@ -127,7 +127,7 @@ function PlayGame(props) {
                         name={"OrderQuantity"}
                         getValue={setOrderValue}
                         setValue={orderValue}
-                        description={"Allowed Characters: 0-9"}
+                        description={"Caractères autorisés: 0-9"}
                         disabled={true}
                     />
                     <Button onClick={submitOrder}>Commande</Button>
@@ -164,7 +164,7 @@ function PlayGame(props) {
                 <div className={"grid_play"}>
                     <div className={"playground"}>
                         <div className={"timer"}>
-                            <p>Round {currentRound}/{gameRounds}</p>
+                            <p>Tour {currentRound}/{gameRounds}</p>
                         </div>
                         <div className={"wrapper_img"}>
                             <img src={roleIcon} alt={"Icon"} />
@@ -172,8 +172,8 @@ function PlayGame(props) {
                         </div>
                         <div className={"line"} />
                         <div className={"wrapper_1"}>
-                            <span>Stock: { stock }</span>
-                            <span>Délai: { delay }</span>
+                            <span>Stock : { stock }</span>
+                            <span>Retard : { delay }</span>
                         </div>
                         <div className={"line"} />
                         <div className={"new_order"}>
@@ -182,15 +182,15 @@ function PlayGame(props) {
                         </div>
                         <div className={"line"} />
                         <>
-                            <span>Livraison à la commission :</span>
+                            <span>Livraison :</span>
                             <div className={"next_products"}>
-                                <span>La semaine prochaine: {next1WeekDelivery}</span>
-                                <span>La semaine après: {next2WeekDelivery}</span>
+                                <span>La semaine prochaine : {next1WeekDelivery}</span>
+                                <span>La semaine après : {next2WeekDelivery}</span>
                             </div>
                         </>
                         <div className={"line"} />
                         <div className={"delivery"}>
-                            <span>Demande: {supplyChainOrder}</span>
+                            <span>Demande : {supplyChainOrder}</span>
                         </div>
                     </div>
                 </div>
@@ -215,7 +215,7 @@ function PlayGame(props) {
         }
         return (
         <div>
-        <span>La partie est finie!</span>
+        <span>La partie est finie !</span>
         <br />
         <Button onClick={exportData}>Exporter les données</Button>
         <br />
