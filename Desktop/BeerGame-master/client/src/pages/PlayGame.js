@@ -94,7 +94,7 @@ function PlayGame(props) {
                 <div className={"grid_play"}>
                     <div className={"playground"}>
                         <h2>En attente de coéquipiers</h2>
-                        <p>Sont en ce moment <b>{ currentRoomSize }</b> depuis <b>4</b> Joueurs dans le hall.</p>
+                        <p>Sont en ce moment <b>{ currentRoomSize }</b> sur <b>4</b> joueurs dans le hall.</p>
                         <p>======================== Les rôles suivants sont occupés ========================</p>
                         { currentRoomRoles.map(element => {
                             return <p key={element}>{element}</p>
