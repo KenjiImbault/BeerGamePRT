@@ -233,7 +233,7 @@ function NewGame(props) {
                     </div>
                         {differentDemands}
                 
-                <Button onClick={createGame}>créer un jeu</Button>
+                <Button onClick={createGame}>Créer un jeu</Button>
             </div>
         )
     }
