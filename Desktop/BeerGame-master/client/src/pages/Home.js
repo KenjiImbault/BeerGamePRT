@@ -17,7 +17,7 @@ class Home extends React.Component {
           
           <div className={"wrapper_button"}>
             <Link to={"/game/create"}>
-              <Button linkTo={"/game/create"}>Démarrer jeu</Button>
+              <Button linkTo={"/game/create"}>Démarrer le jeu</Button>
             </Link>
           </div>
         </div>
