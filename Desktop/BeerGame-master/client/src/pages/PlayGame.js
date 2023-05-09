@@ -190,7 +190,7 @@ function PlayGame(props) {
                         </>
                         <div className={"line"} />
                         <div className={"delivery"}>
-                            <span>Demande de demande: {supplyChainOrder}</span>
+                            <span>Demande: {supplyChainOrder}</span>
                         </div>
                     </div>
                 </div>
