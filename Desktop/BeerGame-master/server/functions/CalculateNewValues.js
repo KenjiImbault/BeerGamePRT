@@ -5,7 +5,6 @@ export default function CalculateNewValues(roleId, role, orderValueByNextRole, d
     newNextWeek2 = role[currentRound].next2Week,
     newDelay = role[currentRound].delay,
     currentOrder = role[currentRound].order,
-    newScore = role[currentRound].score,
     deliveryValueToNextRole = 0;
 
   newStock = newStock + newNextWeek1
@@ -22,7 +21,6 @@ export default function CalculateNewValues(roleId, role, orderValueByNextRole, d
   if(newStock >= orderValueByNextRole) {
     newStock = newStock - orderValueByNextRole
     deliveryValueToNextRole = orderValueByNextRole
-    newScore = newScore + parseInt(newStock)  * 2 + parseInt(newDelay) * 5
     if(newDelay > 0) {
       //If Delay - Inventory >= 0
       if((newDelay - newStock) >= 0) {
@@ -42,7 +40,6 @@ export default function CalculateNewValues(roleId, role, orderValueByNextRole, d
     deliveryValueToNextRole = newStock
     newStock = 0
     newDelay = newDelay + diff
-    newScore = newScore + parseInt(newStock)  * 2 + parseInt(newDelay) * 5
     
   }
 
@@ -50,7 +47,6 @@ export default function CalculateNewValues(roleId, role, orderValueByNextRole, d
   role[currentRound].next1Week = newNextWeek1
   role[currentRound].next2Week = newNextWeek2
   role[currentRound].delay = newDelay
-  role[currentRound].score = newScore
 
   return [role, deliveryValueToNextRole]
 }
