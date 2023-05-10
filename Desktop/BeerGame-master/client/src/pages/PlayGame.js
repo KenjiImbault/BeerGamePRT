@@ -23,7 +23,7 @@ function PlayGame(props) {
     const [next1WeekDelivery, setNext1WeekDelivery] = useState(0) //Livraison la semaine prochaine
     const [next2WeekDelivery, setNext2WeekDelivery] = useState(0) //Livraison la semaine encore d'après
     const [supplyChainOrder, setSupplyChainOrder] = useState(0) //Demande de livraison
-
+    const [Score, setScore] = useState(0)
     const[dataV, setDataV] = useState(0)    
 
     useEffect(() => {
@@ -42,6 +42,7 @@ function PlayGame(props) {
                 setNext1WeekDelivery(data.roundData.producer[data.roundData.currentRound-1].next1Week)
                 setNext2WeekDelivery(data.roundData.producer[data.roundData.currentRound-1].next2Week)
                 setSupplyChainOrder(data.roundData.distributor[data.roundData.currentRound-1].order)
+                setScore(data.roundData.producer[data.roundData.currentRound-1].score)
             }
             else if(selectedRole === 2) {
                 setStock(data.roundData.distributor[data.roundData.currentRound-1].stock)
@@ -49,6 +50,7 @@ function PlayGame(props) {
                 setNext1WeekDelivery(data.roundData.distributor[data.roundData.currentRound-1].next1Week)
                 setNext2WeekDelivery(data.roundData.distributor[data.roundData.currentRound-1].next2Week)
                 setSupplyChainOrder(data.roundData.wholesaler[data.roundData.currentRound-1].order)
+                setScore(data.roundData.distributor[data.roundData.currentRound-1].score)
             }
             else if(selectedRole === 3) {
                 setStock(data.roundData.wholesaler[data.roundData.currentRound-1].stock)
@@ -56,12 +58,14 @@ function PlayGame(props) {
                 setNext1WeekDelivery(data.roundData.wholesaler[data.roundData.currentRound-1].next1Week)
                 setNext2WeekDelivery(data.roundData.wholesaler[data.roundData.currentRound-1].next2Week)
                 setSupplyChainOrder(data.roundData.retailer[data.roundData.currentRound-1].order)
+                setScore(data.roundData.wholesaler[data.roundData.currentRound-1].score)
             }
             else {
                 setStock(data.roundData.retailer[data.roundData.currentRound-1].stock)
                 setDelay(data.roundData.retailer[data.roundData.currentRound-1].delay)
                 setNext1WeekDelivery(data.roundData.retailer[data.roundData.currentRound-1].next1Week)
                 setNext2WeekDelivery(data.roundData.retailer[data.roundData.currentRound-1].next2Week)
+                setScore(data.roundData.retailer[data.roundData.currentRound-1].score)
                 
                 setSupplyChainOrder(data.roundData.demandClient)
                 }
@@ -186,6 +190,7 @@ function PlayGame(props) {
                             <div className={"next_products"}>
                                 <span>La semaine prochaine : {next1WeekDelivery}</span>
                                 <span>La semaine après : {next2WeekDelivery}</span>
+                                <span>SCORE: {Score}</span>
                             </div>
                         </>
                         <div className={"line"} />
