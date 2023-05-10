@@ -190,7 +190,7 @@ function PlayGame(props) {
                             <div className={"next_products"}>
                                 <span>La semaine prochaine : {next1WeekDelivery}</span>
                                 <span>La semaine après : {next2WeekDelivery}</span>
-                                <span>SCORE: {Score}</span>
+                                <span>Score : {Score}</span>
                             </div>
                         </>
                         <div className={"line"} />
