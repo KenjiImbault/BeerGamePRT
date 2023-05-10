@@ -12,10 +12,10 @@ export default function EndGame(io, socket, data) {
   // const exceljs = require('exceljs');
   const workbook = new exceljs.Workbook();
   const worksheetClient = workbook.addWorksheet('Client');
-  const worksheetRetailer = workbook.addWorksheet('Retailer');
-  const worksheetWholesaler = workbook.addWorksheet('Wholesaler');
-  const worksheetDistributor = workbook.addWorksheet('Distributor');
-  const worksheetProducer = workbook.addWorksheet('Producer');
+  const worksheetRetailer = workbook.addWorksheet('Détaillant');
+  const worksheetWholesaler = workbook.addWorksheet('Grossiste');
+  const worksheetDistributor = workbook.addWorksheet('Distributeur');
+  const worksheetProducer = workbook.addWorksheet('Producteur');
 
   console.log("EndGame.js")
 
@@ -23,11 +23,11 @@ export default function EndGame(io, socket, data) {
 
         
         // Ajouter l'en-tête du tableau
-        worksheetClient.addRow(['tour','demandClient']);
-        worksheetRetailer.addRow(['tour','stock','order','delay','next1Week','next2Week']);
-        worksheetWholesaler.addRow(['tour','stock','order','delay','next1Week','next2Week']);
-        worksheetDistributor.addRow(['tour','stock','order','delay','next1Week','next2Week']);
-        worksheetProducer.addRow(['tour','stock','order','delay','next1Week','next2Week']);
+        worksheetClient.addRow(['Tour','DemandeClient']);
+        worksheetRetailer.addRow(['Tour','Stock','Commande','Rupture','LivraisonSemaine1','LivraisonSemaine2']);
+        worksheetWholesaler.addRow(['Tour','Stock','Commande','Rupture','LivraisonSemaine1','LivraisonSemaine2']);
+        worksheetDistributor.addRow(['Tour','Stock','Commande','Rupture','LivraisonSemaine1','LivraisonSemaine2']);
+        worksheetProducer.addRow(['Tour','Stock','Commande','Rupture','LivraisonSemaine1','LivraisonSemaine2']);
       
         let numberOfRounds = 0
         let lastGame = 0
