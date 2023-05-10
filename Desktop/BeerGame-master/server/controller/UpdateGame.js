@@ -28,8 +28,7 @@ export default function UpdateGame(io, socket, intData) {
                         order: parseInt(orderValue),
                         delay: 0,
                         next1Week: 0,
-                        next2Week: 0,
-                        score : 0
+                        next2Week: 0
                     })
                     break
                 case 2:
@@ -38,8 +37,7 @@ export default function UpdateGame(io, socket, intData) {
                         order: parseInt(orderValue),
                         delay: 0,
                         next1Week: 0,
-                        next2Week: 0,
-                        score : 0
+                        next2Week: 0
                     })
                     break
                 case 3:
@@ -48,8 +46,7 @@ export default function UpdateGame(io, socket, intData) {
                         order: parseInt(orderValue),
                         delay: 0,
                         next1Week: 0,
-                        next2Week: 0,
-                        score : 0
+                        next2Week: 0
                     })
                     break
                 case 4:
@@ -58,8 +55,7 @@ export default function UpdateGame(io, socket, intData) {
                         order: parseInt(orderValue),
                         delay: 0,
                         next1Week: 0,
-                        next2Week: 0,
-                        score : 0
+                        next2Week: 0
                     })
                     break
             }
@@ -72,8 +68,7 @@ export default function UpdateGame(io, socket, intData) {
                         order: parseInt(orderValue),
                         delay: producer[currentRound-1].delay,
                         next1Week: producer[currentRound-1].next1Week,
-                        next2Week: producer[currentRound-1].next2Week,
-                        score : producer[currentRound-1].score
+                        next2Week: producer[currentRound-1].next2Week
                     })
                     break
                 case 2:
@@ -82,8 +77,7 @@ export default function UpdateGame(io, socket, intData) {
                         order: parseInt(orderValue),
                         delay: distributor[currentRound-1].delay,
                         next1Week: distributor[currentRound-1].next1Week,
-                        next2Week: distributor[currentRound-1].next2Week,
-                        score : distributor[currentRound-1].score
+                        next2Week: distributor[currentRound-1].next2Week
                     })
                     break
                 case 3:
@@ -92,8 +86,7 @@ export default function UpdateGame(io, socket, intData) {
                         order: parseInt(orderValue),
                         delay: wholesaler[currentRound-1].delay,
                         next1Week: wholesaler[currentRound-1].next1Week,
-                        next2Week: wholesaler[currentRound-1].next2Week,
-                        score : wholesaler[currentRound-1].score
+                        next2Week: wholesaler[currentRound-1].next2Week
                     })
                     break
                 case 4:
@@ -102,8 +95,7 @@ export default function UpdateGame(io, socket, intData) {
                         order: parseInt(orderValue),
                         delay: retailer[currentRound-1].delay,
                         next1Week: retailer[currentRound-1].next1Week,
-                        next2Week: retailer[currentRound-1].next2Week,
-                        score : retailer[currentRound-1].score
+                        next2Week: retailer[currentRound-1].next2Week
                     })
                     break
             }
